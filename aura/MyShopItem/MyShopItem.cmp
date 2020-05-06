@@ -2,8 +2,8 @@
     <aura:attribute name="user" type="Contact"/>
     <aura:attribute name="item" type="Goods__c" required="true"/>
     <div class="itemDiv slds-m-around_medium">
-        <lightning:card title="{!v.item.Name}" >
-            
+        <lightning:card title="{!v.item.Name}">
+            <p>Mail:{!v.user.Email}</p>
         <p>Code: {!v.item.ID__c} </p>
             <p>{!v.item.Description__c}</p>
             <p>Category: {!v.item.Category__c}</p>
@@ -17,4 +17,4 @@
   
         </lightning:card>  
     </div>
-</aura:component>
+</aura:component>	
