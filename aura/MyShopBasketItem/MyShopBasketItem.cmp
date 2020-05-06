@@ -1,0 +1,22 @@
+<aura:component  controller="MyShopController">
+    <aura:attribute name="item" type="Basket__c" required="true"/>
+    <aura:attribute name="goods" type="Goods__c"/>
+
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
+
+    <div class="itemDiv slds-m-around_medium">
+        <lightning:card title="{!v.goods.Name}" >
+        <p>Description: {!v.goods.Description__c}</p>
+        <p>In stock: {!v.goods.Quantity__c}</p>
+        <p slot="footer">{!v.item.Quantity__c} pieces added.</p>
+            <br></br>
+            <lightning:button label="Add to basket" onclick="{!c.addToBasket}"/>
+            <lightning:button label="Remove from basket" onclick="{!c.removefromBasket}"/>
+            <lightning:button label="Delete this item" onclick="{!c.deleteItemFromBasket}"/>   
+            <lightning:input    type="number"
+                            aura:id="count"
+                            value="1"/> 
+  
+        </lightning:card>  
+    </div>
+</aura:component>

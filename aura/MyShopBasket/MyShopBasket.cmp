@@ -1,0 +1,24 @@
+<aura:component implements="flexipage:availableForAllPageTypes,lightning:isUrlAddressable" controller="MyShopController">
+    <aura:attribute name="items" type="Basket__c[]"/>
+    <aura:attribute name="user" type="Contact"/>
+    
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
+
+
+    <lightning:card title="Basket"> 
+        <div class="slds-m-around_medium">
+            <lightning:button label="Back" onclick="{!c.backHandler}"/>
+            <lightning:button label="Refresh" onclick="{!c.refresh}"/>
+            
+            <lightning:button label="Payment" onclick="{!c.paymentHandler}"/>
+            <lightning:button label="Add a card" onclick="{!c.cardHandler}"/>
+
+            <p>Your items</p>
+                <aura:iteration items="{!v.items}" var="item">
+                    <c:MyShopBasketItem item="{!item}"/>
+                </aura:iteration>
+        </div>
+    </lightning:card>
+    
+    <lightning:navigation aura:id="navService"/>
+</aura:component>

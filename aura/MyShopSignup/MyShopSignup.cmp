@@ -1,0 +1,57 @@
+<aura:component implements="flexipage:availableForAllPageTypes,lightning:isUrlAddressable" controller="MyShopController">
+
+
+    <aura:attribute name="signup" type="Contact" 
+    default=
+    "{'Email':'',
+    'Password__c':'',
+    'LastName':'',
+    'MobilePhone':'',
+    'Department':'',
+    'sobjectType':'Contact'}"/>
+
+    <lightning:card title="Sign Up">
+        <div class="slds-m-around_medium">
+        
+            <lightning:input    type="email"
+                                aura:id="signupForm" 
+                                label="Email:"
+                                name="loginForm"
+                                value="{!v.signup.Email}"
+                                required="true"/>
+        <br></br>
+            <lightning:input    type="password"
+                                aura:id="signupForm" 
+                                label="Password:"
+                                name="passwordForm"
+                                value="{!v.signup.Password__c}"
+                                required="true"/>
+        <br></br>
+        <lightning:input        aura:id="signupForm" 
+                                label="Name:"
+                                name="nameForm"
+                                value="{!v.signup.LastName}"/>
+         <!-- <br></br>
+          <lightning:input    type="date"
+                                aura:id="signupForm" 
+                                label="Birthdate:"
+                                name="dateForm"
+                                value="{!v.signup.Birthdate}"/> -->
+        <br></br>
+            <lightning:input    type="tel"
+                                aura:id="signupForm" 
+                                label="Mobile Phone:"
+                                name="mobileForm"
+                                value="{!v.signup.MobilePhone}"/>
+        <br></br>
+            <lightning:input    aura:id="signupForm" 
+                                label="Mailing Address:"
+                                name="addressForm"
+                                value="{!v.signup.Department}"/>
+        <br></br>
+            <lightning:button label="Sign Up" onclick="{!c.signupAction}"/>
+            <lightning:button label="Back" onclick="{!c.backAction}"/>
+        </div>   
+    </lightning:card>
+    <lightning:navigation aura:id="navServiceSign"/>
+</aura:component>

@@ -1,0 +1,56 @@
+<aura:component implements="flexipage:availableForAllPageTypes,lightning:isUrlAddressable" controller="MyShopController">
+    <aura:attribute name="items" type="Basket__c[]"/>
+    <aura:attribute name="cards" type="Card__c[]"/>
+    <aura:attribute name="selectedCard" type="Card__c" default="{'Id':'',
+    'Balance__c':'',
+    'Number__c':'',
+    'sobjectType':'Card__c'}"/>
+    <aura:attribute name="user" type="Contact"/>
+    <aura:attribute name="pay" type="Integer" default="0"/>
+    <aura:handler name="total" event="c:goToBasketEvent"
+        action="{!c.totalPay}"/>
+    
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
+
+
+    <lightning:card title="Payment"> 
+        <div class="slds-m-around_medium">
+            <lightning:button label="Back" onclick="{!c.backHandler}"/>
+            <lightning:button label="Refresh" onclick="{!c.refresh}"/>
+            
+            
+            
+
+            <lightning:input    aura:id="form1" 
+                                label="Your mobile number:"
+                                value="{!v.user.MobilePhone}"
+                                disabled="true"/>
+            <lightning:input    aura:id="form2" 
+                                label="Your mailing address:"
+                                value="{!v.user.Department}"
+                                disabled="true"/>
+
+            <lightning:button label="Add a card" onclick="{!c.cardHandler}"/>
+            <lightning:button label="Change data" onclick="{!c.changeHandler}"/>
+
+
+            <lightning:select aura:id="select" name="select1" label="Choose your card:"  required="true" value="{!v.selectedCard.Id}" >
+                <option value="">choose one...</option>
+                <aura:iteration items="{!v.cards}" var="card">
+                    <option value="{!card.Id}">{!card.Number__c}({!card.Balance__c} Ruble)</option>
+                </aura:iteration>
+            </lightning:select>
+
+            <lightning:button label="Pay"  variant="brand" onclick="{!c.payHandler}"/>
+            <p>Your items</p>
+            
+            <p>Total pay: {!v.pay} Ruble</p>
+                <aura:iteration items="{!v.items}" var="item">
+                    <c:MyShopPaymentItem item="{!item}"/>
+                </aura:iteration>
+        </div>
+    </lightning:card>
+
+    
+    <lightning:navigation aura:id="navService"/>
+</aura:component>

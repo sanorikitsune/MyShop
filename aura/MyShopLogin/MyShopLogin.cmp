@@ -1,0 +1,33 @@
+<aura:component implements="flexipage:availableForAllPageTypes,lightning:isUrlAddressable" controller="MyShopController">
+
+    <aura:attribute name="login" type="Contact" 
+    default=
+    "{'Email':'',
+    'Password__c':'',
+    'sobjectType':'Contact'}"/>
+
+    <lightning:card title="Login">
+        <div class="slds-m-around_medium">
+        
+            <lightning:input    type="Email"
+                                aura:id="loginForm" 
+                                label="Username(Email):"
+                                name="loginForm"
+                                value="{!v.login.Email}"
+                                required="true"/>
+        <br></br>
+            <lightning:input    type="Password"
+                                aura:id="loginForm" 
+                                label="Password:"
+                                name="passwordForm"
+                                value="{!v.login.Password__c}"
+                                required="true"/>
+        <br></br>
+            <lightning:button label="Log In" onclick="{!c.loginAction}"/>
+            <lightning:button label="Sign Up" onclick="{!c.loginToSignup}"/>
+        </div>   
+    </lightning:card>
+
+    <lightning:navigation aura:id="navService"/>
+
+</aura:component>

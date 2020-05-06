@@ -1,0 +1,20 @@
+<aura:component  controller="MyShopController">
+    <aura:attribute name="item" type="Basket__c" required="true"/>
+    <aura:attribute name="goods" type="Goods__c"/>
+
+    <aura:registerEvent name="total" type="c:goToBasketEvent"/>
+
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
+
+    <div class="itemDiv slds-m-around_medium">
+        <lightning:card title="{!v.goods.Name}" >
+        <p>Description: {!v.goods.Description__c}</p>
+        <p>In stock: {!v.goods.Quantity__c}</p>
+        <p slot="footer">{!v.item.Quantity__c} pieces added.</p>
+        <p>Price: {!v.goods.Price__c} Ruble</p>
+        <p>All: {!v.goods.Price__c*v.item.Quantity__c} Ruble</p>
+            <br></br>
+  
+        </lightning:card>  
+    </div>
+</aura:component>

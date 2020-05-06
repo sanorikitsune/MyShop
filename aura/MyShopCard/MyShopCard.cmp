@@ -1,0 +1,36 @@
+<aura:component implements="flexipage:availableForAllPageTypes,lightning:isUrlAddressable" controller="MyShopController">
+
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
+    <aura:attribute name="user" type="Contact"/>
+    
+    <aura:attribute name="card" type="Card__c" 
+    default=
+    "{'Number__c':'',
+    'Balance__c': 0,
+    'sobjectType':'Card__c'}"/>
+
+    <lightning:card title="Cards">
+        <div class="slds-m-around_medium">
+        
+            <lightning:input    type="Number"
+                                aura:id="loginForm" 
+                                label="Card number:"
+                                name="loginForm"
+                                value="{!v.card.Number__c}"
+                                required="true"/>
+        <br></br>
+            <lightning:input    type="Number"
+                                aura:id="loginForm" 
+                                label="Balance:"
+                                name="passwordForm"
+                                value="{!v.card.Balance__c}"
+                                required="true"/>
+        <br></br>
+            <lightning:button label="Add card" onclick="{!c.addCard}"/>
+            <lightning:button label="Back" onclick="{!c.backHandler}"/>
+        </div>   
+    </lightning:card>
+
+    <lightning:navigation aura:id="navService"/>
+
+</aura:component>

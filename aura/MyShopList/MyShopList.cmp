@@ -1,0 +1,44 @@
+<aura:component implements="flexipage:availableForAllPageTypes,lightning:isUrlAddressable" controller="MyShopController">
+    
+
+    <aura:attribute name="goods" type="Goods__c[]"/>
+    <aura:attribute name="user" type="Contact"/>
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
+
+    <lightning:card title="Goods"> 
+
+   
+     
+  
+    <div class="slds-m-around_medium">
+        <!--Name filters-->
+        <lightning:button label="A->Z" onclick="{!c.filterA}"/>
+        <lightning:button label="Z->A" onclick="{!c.filterZ}"/>
+        
+        <!--Code filters-->
+        <lightning:button label="Code Asc" onclick="{!c.codeFilterAsc}"/>                
+        <lightning:button label="Code Desk" onclick="{!c.codeFilterDesc}"/>
+        
+        <!--Price filters-->
+        <lightning:button label="Price Asc" onclick="{!c.priceFilterAsc}"/>                
+        <lightning:button label="Price Desk" onclick="{!c.priceFilterDesc}"/>
+        <!--Category filters-->
+        <lightning:button label="All" onclick="{!c.filterA}"/>                
+        <lightning:button label="Food" onclick="{!c.foodFilter}"/>
+        <lightning:button label="Remedy" onclick="{!c.remedyFilter}"/>
+        <lightning:button label="Household goods" onclick="{!c.houseFilter}"/>
+
+        <lightning:button label="Dirty Hack" onclick="{!c.hackHandler}"/> 
+        <br></br>
+        <lightning:button label="In basket" onclick="{!c.basketHandler}"/> 
+
+
+
+        <aura:iteration items="{!v.goods}" var="item">
+            <c:MyShopItem item="{!item}" user="{!v.user}"/>
+        </aura:iteration>
+        
+    </div>
+    </lightning:card>
+    <lightning:navigation aura:id="navService"/>
+</aura:component>

@@ -1,0 +1,56 @@
+<aura:component implements="flexipage:availableForAllPageTypes,lightning:isUrlAddressable" controller="MyShopController">
+
+
+    <aura:attribute name="hack" type="Goods__c"
+    default=
+    "{'Name':'',
+    'Description__c':'',
+    'Category__c':'',
+    'Price__c':'',
+    'Quantity__c':'',
+    'sobjectType':'Goods__c'}"/>
+/>
+
+    <lightning:card title="Dirty Hack">
+        <div class="slds-m-around_medium">
+        
+
+            <lightning:input    aura:id="form" 
+                                label="Name:"
+                                value="{!v.hack.Name}"/>
+        <br></br>
+            <lightning:input    aura:id="form" 
+                                label="Description:"
+                                value="{!v.hack.Description__c}"/>
+        <br></br>
+            <lightning:select aura:id="form" label="Category:" value="{!v.hack.Category__c}">
+                <option value="">choose one...</option>
+                <option value="Food">Food</option>
+                <option value="Remedy">Remedy</option>
+                <option value="Household goods">Household goods</option>
+            </lightning:select>
+        <br></br>
+            <lightning:input    type="number"
+                                formatter="currency"
+                                aura:id="form" 
+                                label="Price:"
+                                value="{!v.hack.Price__c}"/>
+        <br></br>
+            <lightning:input    type="number"
+                                aura:id="form" 
+                                label="Quantity:"
+                                value="{!v.hack.Quantity__c}"/>
+        <br></br>
+            <lightning:button label="Add" onclick="{!c.addAction}"/>
+            <lightning:button label="Back" onclick="{!c.backAction}"/>
+        <br></br><br></br>
+            <lightning:input    aura:id="formdel" 
+                                label="Name:"
+                                value="{!v.hack.Name}"/>
+        <br></br>
+            <lightning:button label="Delete" onclick="{!c.delAction}"/>
+
+        </div>   
+    </lightning:card>
+    <lightning:navigation aura:id="navServiceSign"/>
+</aura:component>
