@@ -31,12 +31,7 @@
                                 label="Name:"
                                 name="nameForm"
                                 value="{!v.signup.LastName}"/>
-         <!-- <br></br>
-          <lightning:input    type="date"
-                                aura:id="signupForm" 
-                                label="Birthdate:"
-                                name="dateForm"
-                                value="{!v.signup.Birthdate}"/> -->
+
         <br></br>
             <lightning:input    type="tel"
                                 aura:id="signupForm" 
